@@ -10,13 +10,13 @@ public class App {
     static char[][] grid = new char[3][3];
 
     public static void main(String[] args) throws Exception {
+        System.out.println(Color.ANSI_YELLOW + "X O X");
         System.out.println("X O X");
-        System.out.println("X O X");
-        System.out.println("X O X");
+        System.out.println("X O X" + Color.ANSI_RESET);
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter cells : ");
+        System.out.print(Color.ANSI_CYAN + "Enter cells : " + Color.ANSI_RESET);
 
         String input = scanner.next();
 
@@ -39,20 +39,20 @@ public class App {
     }
 
     private static void showGrid(char[][] grid) {
-        System.out.println("----------");
+        System.out.println("---------");
         for (int i = 0; i < grid.length; i++) {
             System.out.print("| ");
             for (int j = 0; j < grid[i].length; j++) {
-                System.out.print(grid[i][j] + " ");
+                System.out.print(Color.ANSI_GREEN + grid[i][j] + " " + Color.ANSI_RESET);
             }
             System.out.println("|");
         }
-        System.out.println("----------");
+        System.out.println("---------");
     }
 
     private static void coordinates2() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the coordinates: ");
+        System.out.print(Color.ANSI_CYAN + "Enter the coordinates: " + Color.ANSI_RESET);
         try {
             int fc = scanner.nextInt();
             int sc = scanner.nextInt();
@@ -60,11 +60,11 @@ public class App {
                 grid[fc - 1][sc - 1] = 'X';
                 showGrid(grid);
             } else {
-                System.out.println("This cell is occupied! Choose another one!");
+                System.out.println(Color.ANSI_RED + "This cell is occupied! Choose another one!" + Color.ANSI_RESET);
                 coordinates2();
             }
         } catch (Exception e) {
-            System.out.println("You should enter numbers!");
+            System.out.println(Color.ANSI_RED + "You should enter numbers!" + Color.ANSI_RESET);
             coordinates2();
         }
         scanner.close();
@@ -77,15 +77,15 @@ public class App {
         readCrossY(grid);
 
         if (x == true && o == true || (countX - countO >= 2) || (countO - countX >= 2)) {
-            System.out.println("Impossible");
+            System.out.println(Color.ANSI_RED + "Impossible" + Color.ANSI_RESET);
         } else if (x == true) {
-            System.out.println("X wins");
+            System.out.println(Color.ANSI_GREEN + "X wins" + Color.ANSI_RESET);
         } else if (o == true) {
-            System.out.println("O wins");
+            System.out.println(Color.ANSI_GREEN + "O wins" + Color.ANSI_RESET);
         } else if (draw == false) {
-            System.out.println("Draw");
+            System.out.println(Color.ANSI_CYAN + "Draw" + Color.ANSI_RESET);
         } else if (draw == true) {
-            System.out.println("Game not finished");
+            System.out.println(Color.ANSI_RED + "Game not finished" + Color.ANSI_RESET);
         }
     }
 
